@@ -10,6 +10,9 @@ const options = {
     addQuiz: (state, action) => {
       let newQuiz = action.payload;
       state.quizzes[newQuiz.id] = newQuiz;
+    },
+    removeQuiz: (state, action) => {
+      let updatedQuizState = state.filter();
     }
   }
 };

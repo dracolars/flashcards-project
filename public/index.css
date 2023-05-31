@@ -9,9 +9,8 @@ body {
 }
 
 nav {
-  background: #b736ff;
+  background: #141c3a;
   display: flex;
-  padding: 24px 36px;
 }
 
 nav ul {
@@ -27,6 +26,16 @@ nav ul li {
   margin-bottom: 0 !important;
 }
 
+div.nav-link {
+  width: 100%;
+  text-align: center;
+  padding: 16px 100px;
+}
+
+nav li:hover {
+  background-color: #3950a1;
+}
+
 nav a {
   color: white;
   font-size: 16px;
@@ -40,33 +49,40 @@ nav a.active {
 h1 {
   font-weight: bold;
   font-size: 20px;
-  color: #000000;
+  color: #141f47;
   margin: 0;
 }
 
 h2 {
   font-weight: bold;
   font-size: 16px;
-  color: #000000;
+  color: #1d2b5d;
   margin: 0;
 }
 
 button,
 .button {
   background: #ffffff;
-  border: 1px solid #03a8d8;
-  border-radius: 20px;
+  border: 1px solid #141c3a;
+  border-radius: 10px;
   text-align: center;
   font-weight: bold;
   font-size: 14px;
-  color: #03a8d8;
+  color: #141c3a;
   padding: 10px 21px;
   text-decoration: none;
+  cursor: pointer;
+}
+
+/* .button is for main "create" buttons  */
+.button:hover {
+  border: 1px solid #25ba88;
+  background-color: #25ba88;
+  color: white;
 }
 
 .create-new-topic-button {
   margin: 0 auto;
-  display: block;
   width: 182px;
 }
 
@@ -76,12 +92,16 @@ section {
 
 input,
 select {
+  display: block;
   background: #ffffff;
   border: 1px solid #979797;
   border-radius: 3px;
   padding: 8px 10px;
-  width: 100%;
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 select:invalid,
@@ -107,26 +127,71 @@ section > h1 {
   text-align: center;
 }
 
-.actions-container {
-  padding-top: 16px;
-  display: flex;
-  justify-content: space-between;
-}
+/*    CARDS    */
 
 .card-front-back {
-  padding-top: 25px;
+  background-color: #232e4e;
+  width: 70%;
+  margin: 10px auto;
+  border-radius: 10px;
 }
 
-.remove-card-button {
-  color: #03a8d8;
-  text-align: right;
-  font-weight: bold;
-  font-size: 12px;
-  margin-left: auto;
-  display: block;
+.card-actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2px solid #222;
+  color: white;
+}
+
+.card-actions .card-index {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  padding: 0 15px;
+}
+
+.card-actions p {
+  margin: 12px 10px;
+}
+
+.card-actions .card-remove {
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  padding: 0 15px;
+}
+
+.card-actions .card-remove svg {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.card-actions .card-remove svg:hover {
+  color: #25ba88;
+}
+
+.card-contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.card-contents input {
+  margin: 12px 10px;
   border: none;
-  padding: unset;
-  margin-top: -8px;
+  border-bottom: 2px solid white;
+  border-radius: 0;
+  background-color: #2e3856;
+  color: white;
+  outline: none;
+}
+
+.card-contents input:focus {
+  border: none;
+  border-bottom: 2px solid #25ba88;
+  border-radius: 0;
 }
 
 option {
@@ -136,6 +201,8 @@ option {
 .topics-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  gap: 12px;
 }
 
 .topic {
@@ -143,6 +210,8 @@ option {
   border: 1px solid #bcbcbc;
   border-radius: 3px;
   padding: 26px 20px;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .topic-container {
@@ -201,6 +270,17 @@ li:not(:last-child) {
 .quiz > a {
   text-decoration: none;
   color: #000000;
+}
+
+div.actions-container {
+  margin: 10px auto;
+  text-align: center;
+}
+
+button.save-quiz {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .cards-list {

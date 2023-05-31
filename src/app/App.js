@@ -21,17 +21,17 @@ export default function App() {
         <ul>
           <li>
             <NavLink to={ROUTES.topicsRoute()} activeClassName="active">
-              Topics
+              <div className="nav-link">Topics</div>
             </NavLink>
           </li>
           <li>
             <NavLink to={ROUTES.quizzesRoute()} activeClassName="active">
-              Quizzes
+              <div className="nav-link">Quizzes</div>
             </NavLink>
           </li>
           <li>
             <NavLink to={ROUTES.newQuizRoute()} activeClassName="active">
-              New Quiz
+              <div className="nav-link">New Quiz</div>
             </NavLink>
           </li>
         </ul>

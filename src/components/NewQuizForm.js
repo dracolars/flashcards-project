@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTopics } from "../features/topics/TopicsSlice";
 import { createQuizThunk } from "../features/quizzes/QuizzesSlice";
 import { addCard } from "../features/cards/CardsSlice";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
@@ -82,35 +84,41 @@ export default function NewQuizForm() {
         </select>
         {cards.map((card, index) => (
           <div key={index} className="card-front-back">
-            <input
-              id={`card-front-${index}`}
-              value={cards[index].front}
-              onChange={(e) =>
-                updateCardState(index, "front", e.currentTarget.value)
-              }
-              placeholder="Front"
-            />
+            <div className="card-actions">
+              <div className="card-index">
+                <p>{index + 1}</p>
+              </div>
+              <div className="card-remove">
+                <FontAwesomeIcon
+                  onClick={(e) => removeCard(e, index)}
+                  icon={("fas", faTrash)}
+                />
+              </div>
+            </div>
+            <div className="card-contents">
+              <input
+                id={`card-front-${index}`}
+                value={cards[index].front}
+                onChange={(e) =>
+                  updateCardState(index, "front", e.currentTarget.value)
+                }
+                placeholder="Front"
+              />
 
-            <input
-              id={`card-back-${index}`}
-              value={cards[index].back}
-              onChange={(e) =>
-                updateCardState(index, "back", e.currentTarget.value)
-              }
-              placeholder="Back"
-            />
-
-            <button
-              onClick={(e) => removeCard(e, index)}
-              className="remove-card-button"
-            >
-              Remove Card
-            </button>
+              <input
+                id={`card-back-${index}`}
+                value={cards[index].back}
+                onChange={(e) =>
+                  updateCardState(index, "back", e.currentTarget.value)
+                }
+                placeholder="Back"
+              />
+            </div>
           </div>
         ))}
         <div className="actions-container">
           <button onClick={addCardInputs}>Add a Card</button>
-          <button>Create Quiz</button>
+          {cards.length > 0 && <button className="save-quiz">Save Quiz</button>}
         </div>
       </form>
     </section>
