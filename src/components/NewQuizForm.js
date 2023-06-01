@@ -13,6 +13,7 @@ export default function NewQuizForm() {
   const [name, setName] = useState("");
   const [cards, setCards] = useState([]);
   const [topicId, setTopicId] = useState("");
+  const [descr, setDescr] = useState("");
   const history = useHistory();
   const topics = useSelector(selectTopics);
   const dispatch = useDispatch();
@@ -64,24 +65,37 @@ export default function NewQuizForm() {
     <section>
       <h1>Create a new quiz</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          id="quiz-name"
-          value={name}
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Quiz Title"
-        />
-        <select
-          id="quiz-topic"
-          onChange={(e) => setTopicId(e.currentTarget.value)}
-          placeholder="Topic"
-        >
-          <option value="">Topic</option>
-          {Object.values(topics).map((topic) => (
-            <option key={topic.id} value={topic.id}>
-              {topic.name}
-            </option>
-          ))}
-        </select>
+        <div className="quiz-meta-container">
+          <div className="quiz-title-container">
+            <span className="input-label">Title</span>
+            <input
+              id="quiz-name"
+              value={name}
+              onChange={(e) => setName(e.currentTarget.value)}
+              placeholder="Quiz Title"
+            />
+          </div>
+          <div className="quiz-desc-container">
+            <input
+              id="quiz-description"
+              value={descr}
+              onChange={(e) => setDescr(e.currentTarget.value)}
+              placeholder="Description"
+            />
+            <select
+              id="quiz-topic"
+              onChange={(e) => setTopicId(e.currentTarget.value)}
+              placeholder="Select Topic"
+            >
+              <option value="">Select Topic</option>
+              {Object.values(topics).map((topic) => (
+                <option key={topic.id} value={topic.id}>
+                  {topic.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
         {cards.map((card, index) => (
           <div key={index} className="card-front-back">
             <div className="card-actions">
@@ -116,8 +130,10 @@ export default function NewQuizForm() {
             </div>
           </div>
         ))}
-        <div className="actions-container">
-          <button onClick={addCardInputs}>Add a Card</button>
+        <div className="add-card" onClick={addCardInputs}>
+          <p>Add a Card</p>
+        </div>
+        <div className="actions-container lower-save">
           {cards.length > 0 && <button className="save-quiz">Save Quiz</button>}
         </div>
       </form>

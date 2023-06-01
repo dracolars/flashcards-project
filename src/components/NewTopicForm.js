@@ -24,16 +24,21 @@ export default function NewTopicForm() {
 
   return (
     <section>
+      <h1>Create a new topic</h1>
       <form onSubmit={handleSubmit}>
-        <h1 className="center">Create a new topic</h1>
-        <div className="form-section">
-          <input
-            id="topic-name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder="Topic Name"
-          />
+        <div className="quiz-meta-container">
+          <div className="quiz-title-container">
+            <span className="input-label">Topic</span>
+            <input
+              id="topic-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.currentTarget.value)}
+              placeholder="Topic Name"
+            />
+          </div>
+        </div>
+        <div className="form-section topic-form-section">
           <select
             onChange={(e) => setIcon(e.currentTarget.value)}
             required
@@ -49,7 +54,7 @@ export default function NewTopicForm() {
             ))}
           </select>
         </div>
-        <button className="center">Add Topic</button>
+        <button>Add Topic</button>
       </form>
     </section>
   );
