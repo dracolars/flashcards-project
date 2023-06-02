@@ -15,11 +15,17 @@ code {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .topics-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  grid-auto-flow: column;
+  margin-bottom: 20px;
 }
 
 .quizzes-list {
@@ -424,12 +430,12 @@ option {
 }
 
 .topic-container {
-  display: flex;
+  text-align: center;
+  padding: 10px;
 }
 
 .topic img {
   width: 40px;
-  margin-right: 14px;
 }
 
 .text-content > * {
@@ -438,10 +444,6 @@ option {
 
 .text-content > p {
   font-size: 14px;
-}
-
-li:not(:last-child) {
-  margin-bottom: 20px;
 }
 
 .topic-icon {
